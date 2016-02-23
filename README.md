@@ -4,24 +4,24 @@
   </a>
 </div>
 
-> [Nunjucks](https://github.com/lukeed/fly-nunjucks) plugin for _[Fly][fly]_.
+> Compile/precompile [Nunjucks](https://mozilla.github.io/nunjucks/) templates with Fly.
+
+*Issues with the output should be reported on the Nunjucks [issue tracker](https://github.com/mozilla/nunjucks/issues).*
 
 [![][fly-badge]][fly]
 [![npm package][npm-ver-link]][releases]
 [![][dl-badge]][npm-pkg-link]
 [![][travis-badge]][travis-link]
 
-## Usage
-> Check out the [documentation](PLUGIN_DOCUMENTATION) to see the available options.
-
-### Install
+## Install
 
 ```a
 npm install -D fly-nunjucks
 ```
 
-### Example
+## Usage
 
+### Example
 ```js
 export default function* () {
   yield ...
