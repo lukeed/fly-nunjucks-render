@@ -4,7 +4,7 @@
   </a>
 </div>
 
-> Compile/precompile [Nunjucks](https://mozilla.github.io/nunjucks/) templates with Fly.
+> Render [Nunjucks](https://mozilla.github.io/nunjucks/) templates with Fly.
 
 *Issues with the output should be reported on the Nunjucks [issue tracker](https://github.com/mozilla/nunjucks/issues).*
 
