@@ -65,12 +65,12 @@ Same as `options.data`, but parses JSON from an external file. Useful for large 
 
 MIT © [Luke Edwards](https://lukeed.com)
 
-[releases]:     https://github.com/lukeed/fly-nunjucks/releases
+[releases]:     https://github.com/lukeed/fly-nunjucks-render/releases
 [fly]:          https://www.github.com/flyjs/fly
 [fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
 [mit-badge]:    https://img.shields.io/badge/license-MIT-444444.svg?style=flat-square
-[npm-pkg-link]: https://www.npmjs.org/package/fly-nunjucks
-[npm-ver-link]: https://img.shields.io/npm/v/fly-nunjucks.svg?style=flat-square
-[dl-badge]:     http://img.shields.io/npm/dm/fly-nunjucks.svg?style=flat-square
-[travis-link]:  https://travis-ci.org/lukeed/fly-nunjucks
-[travis-badge]: http://img.shields.io/travis/lukeed/fly-nunjucks.svg?style=flat-square
+[npm-pkg-link]: https://www.npmjs.org/package/fly-nunjucks-render
+[npm-ver-link]: https://img.shields.io/npm/v/fly-nunjucks-render.svg?style=flat-square
+[dl-badge]:     http://img.shields.io/npm/dm/fly-nunjucks-render.svg?style=flat-square
+[travis-link]:  https://travis-ci.org/lukeed/fly-nunjucks-render
+[travis-badge]: http://img.shields.io/travis/lukeed/fly-nunjucks-render.svg?style=flat-square
