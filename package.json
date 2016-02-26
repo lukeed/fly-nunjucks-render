@@ -1,5 +1,5 @@
 {
-  "name": "fly-nunjucks",
+  "name": "fly-nunjucks-render",
   "version": "0.0.0",
   "description": "Use the Nunjucks templating engine with Fly!",
   "license": "MIT",

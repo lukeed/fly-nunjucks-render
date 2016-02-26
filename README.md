@@ -16,7 +16,7 @@
 ## Install
 
 ```a
-npm install -D fly-nunjucks
+npm install -D fly-nunjucks-render
 ```
 
 ## Usage
@@ -24,7 +24,13 @@ npm install -D fly-nunjucks
 ### Example
 ```js
 export default function* () {
-  yield ...
+  yield this.source('src/*.html')
+    .nunjucks({
+      data: {name: 'Luke Edwards'},
+      // or
+      dataPath: 'src/path/to/data.json'
+    })
+    .target('dist');
 }
 ```
 
