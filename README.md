@@ -35,6 +35,7 @@ export default function* () {
 ```
 
 ```html
+<!-- src/index.html -->
 <p>Hello, {{ name }}!</p>
 ```
 
