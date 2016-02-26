@@ -26,6 +26,7 @@ npm install -D fly-nunjucks-render
 export default function* () {
   yield this.source('src/*.html')
     .nunjucks({
+      base: 'src/partials',
       data: {name: 'Luke Edwards'},
       // or
       dataPath: 'src/path/to/data.json'
