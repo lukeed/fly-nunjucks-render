@@ -1,9 +1,9 @@
 {
   "name": "fly-nunjucks-render",
   "version": "0.0.0",
-  "description": "Use the Nunjucks templating engine with Fly!",
+  "description": "Render Nunjucks templates with Fly!",
   "license": "MIT",
-  "repository": "https://github.com/lukeed/fly-nunjucks",
+  "repository": "https://github.com/lukeed/fly-nunjucks-render",
   "main": "index.js",
   "files": [
     "index.js"
