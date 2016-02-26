@@ -11,15 +11,13 @@
   "keywords": [
     "fly",
     "fly-plugin",
-    "nunjucks"
+    "nunjucks",
+    "template",
+    "html"
   ],
   "scripts": {
-    "setup": "npm i && npm test",
-    "spec": "npm run test | tspec",
-    "test": "npm run tape",
-    "build": "echo No build task specified.",
-    "deploy": "npm run test && git push origin master && npm publish",
-    "tape": "node --harmony --harmony_arrow_functions ./node_modules/tape/bin/tape test/*.js"
+    "test": "xo",
+    "build": "echo No build task specified."
   },
   "author": {
     "name": "Luke Edwards",
@@ -31,8 +29,7 @@
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
-    "tap-spec": "^4.1.1",
-    "tape": "^4.2.2"
+    "xo": "*"
   },
   "engines": {
     "iojs": ">= 1.0.0",
