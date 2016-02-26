@@ -21,7 +21,6 @@ npm install -D fly-nunjucks-render
 
 ## Usage
 
-### Example
 ```js
 export default function* () {
   yield this.source('src/*.html')
@@ -34,6 +33,33 @@ export default function* () {
     .target('dist');
 }
 ```
+
+```html
+<p>Hello, {{ name }}!</p>
+```
+
+## API
+
+#### base
+
+Type: `string`<br>
+Default: *`.`, the current working directory*
+
+Tells _nunjucks_ where your templates live.
+
+#### data
+
+Type: `object`<br>
+Default: *`{}`, optional*
+
+Context data that are passed to your view templates.
+
+#### dataPath
+
+Type: `string`<br>
+Default: *`null`, optional*
+
+Same as `options.data`, but parses JSON from an external file. Useful for large datasets.
 
 ## License
 
