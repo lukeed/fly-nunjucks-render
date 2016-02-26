@@ -1,34 +1,41 @@
-module.exports = function (/*debug*/) {
-  this.filter("nunjucks", (data, options) => {
-  /**
-    @overview A filter plugin returns an object { code, map, ext }
-    which is the result of transforming the incomding data source:
+'use strict';
 
-      return { code, map, ext }
+var fs = require('fs');
+var path = require('path');
+var nunjucks = require('nunjucks');
+var assign = require('object-assign');
 
-    @example Sync filter `j` that transforms a given string into an
-    object, i.e, {code, map} where code is the result data and map
-    a sourcemap if `options.sourceMap === true`.
+var defaults = {
+  data: {},
+  dataPath: null,
+  watch: false
+};
 
-      const j = require("my-js-transformer")
-      const assign = require("object-assign")
+module.exports = function () {
+  var self = this;
+  self.filter('nunjucks', function (source, options) {
+    options = assign({}, defaults, options || {});
+    return self.defer(compile.bind(self))(options);
+  });
+};
 
-      module.exports = function () {
-        return this.filter("j", (data, options) => {
-          return assign({ ext: ".js"}, j.render(data.toString(), options))
-        })
+function compile(options, cb) {
+  var self = this;
+
+  var env = nunjucks.configure(options);
+
+  // check for a dataPath first, else resort to `options.data`
+  var data = options.dataPath ? getData(options.dataPath) : options.data;
+
+  return self.unwrap(function (files) {
+    env.render(files, data, function (err, buf) {
+      if (err) {
+        return self.emit('plugin_error', {
+          plugin: 'fly-nunjucks',
+          error: err.message
+        });
       }
-
-    @example Async filter `s` that transforms a given string and invokes
-    a callback function with an object, i.e, {css, map}.
-
-    const s = require("my-style-trasformer")
-    const assign = require("object-assign")
-
-    module.exports = function () {
-      return this.defer(s.render)(data.toString(), options).then((result) =>
-        assign({ ext: ".css"}, result))
-    }
-  */
+      cb(null, buf.toString());
+    });
   })
 }
