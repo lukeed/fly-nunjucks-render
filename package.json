@@ -1,6 +1,6 @@
 {
   "name": "fly-nunjucks-render",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Render Nunjucks templates with Fly!",
   "license": "MIT",
   "repository": "https://github.com/lukeed/fly-nunjucks-render",
