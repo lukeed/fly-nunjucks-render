@@ -1,47 +1,31 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var nunjucks = require('nunjucks');
-var assign = require('object-assign');
-
-var defaults = {
-	base: '.',
-	data: {},
-	dataPath: null
-};
+const resolve = require('path').resolve;
+const nunjucks = require('nunjucks');
 
 module.exports = function () {
-	var self = this;
+	this.plugin('nunjucks', {}, function * (file, opts) {
+		opts = Object.assign({base: '.', data: {}, dataPath: ''}, opts);
 
-	self.filter('nunjucks', function (source, options) {
-		options = assign({}, defaults, options || {});
-		return self.defer(compile.bind(self))(source, options);
-	});
-};
+		// configure base directory
+		nunjucks.configure(opts.base, opts);
 
-function compile(src, opts, cb) {
-	var self = this;
+		let ctx;
+		// check for a dataPath first, else resort to `options.data`
+		if (opts.dataPath) {
+			const str = yield this.$.read(resolve(this.root, opts.dataPath), 'utf8');
+			ctx = JSON.parse(str);
+		} else {
+			ctx = opts.data;
+		}
 
-	// setup env
-	nunjucks.configure(opts.base, opts);
-
-	// check for a dataPath first, else resort to `options.data`
-	var data = opts.dataPath ? getData(self.root, opts.dataPath) : opts.data;
-
-	// render single file
-	return nunjucks.renderString(src.toString(), data, function (err, buf) {
-		if (err) {
-			return self.emit('plugin_error', {
+		try {
+			file.data = nunjucks.renderString(file.data.toString(), ctx);
+		} catch (err) {
+			return this.emit('plugin_error', {
 				plugin: 'fly-nunjucks-render',
 				error: err.message
 			});
 		}
-		cb(null, buf.toString());
 	});
-}
-
-function getData(dir, file) {
-	file = path.resolve(dir, file);
-	return JSON.parse(fs.readFileSync(file, 'utf8'));
-}
+};

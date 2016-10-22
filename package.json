@@ -13,6 +13,8 @@
     "fly-plugin",
     "nunjucks",
     "template",
+    "render",
+    "engine",
     "html"
   ],
   "scripts": {
@@ -24,8 +26,7 @@
     "url": "https://lukeed.com"
   },
   "dependencies": {
-    "nunjucks": "^2.3.0",
-    "object-assign": "^4.0.1"
+    "nunjucks": "^2.5.0"
   },
   "devDependencies": {
     "xo": "*"
