@@ -1,28 +1,25 @@
-<div align="center">
+# fly-nunjucks-render [![][travis-badge]][travis-link]
+
+<!-- <div align="center">
   <a href="http://github.com/flyjs/fly">
     <img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
   </a>
-</div>
+</div> -->
 
 > Render [Nunjucks](https://mozilla.github.io/nunjucks/) templates with Fly.
 
-*Issues with the output should be reported on the Nunjucks [issue tracker](https://github.com/mozilla/nunjucks/issues).*
-
-[![][fly-badge]][fly]
-[![npm package][npm-ver-link]][releases]
-[![][dl-badge]][npm-pkg-link]
-[![][travis-badge]][travis-link]
+_Issues with the output should be reported on the Nunjucks [issue tracker](https://github.com/mozilla/nunjucks/issues)._
 
 ## Install
 
-```a
-npm install -D fly-nunjucks-render
+```
+npm install --save-dev fly-nunjucks-render
 ```
 
 ## Usage
 
 ```js
-export default function* () {
+exports.default = function * () {
   yield this.source('src/*.html')
     .nunjucks({
       base: 'src/partials',
@@ -41,37 +38,38 @@ export default function* () {
 
 ## API
 
-#### base
+### .nunjucks(options)
+
+Multiple [configuration options](https://mozilla.github.io/nunjucks/api.html#configure) for Nunjucks are available.
+
+> **Important:** Please do not attempt to use the `watch` option. Instead, use `fly.watch()`.
+
+See below for additional options specific to `fly-nunjucks-render`.
+
+#### options.base
 
 Type: `string`<br>
-Default: *`.`, the current working directory*
+Default: `.`
 
-Tells _nunjucks_ where your templates live.
+Specify the location of your templates. Without this, Nunjucks will not be able to reliably compile or find your partials.
 
-#### data
+#### options.data
 
 Type: `object`<br>
-Default: *`{}`, optional*
+Default: `{}`
 
-Context data that are passed to your view templates.
+Context data that is passed to your templates. _Optional_
 
-#### dataPath
+#### option.dataPath
 
 Type: `string`<br>
-Default: *`null`, optional*
+Default: `''`
 
-Same as `options.data`, but parses JSON from an external file. Useful for large datasets.
+Similar to `options.data`, but is a path to an external file. Useful for large datasets. _Optional_
 
 ## License
 
 MIT © [Luke Edwards](https://lukeed.com)
 
-[releases]:     https://github.com/lukeed/fly-nunjucks-render/releases
-[fly]:          https://www.github.com/flyjs/fly
-[fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
-[mit-badge]:    https://img.shields.io/badge/license-MIT-444444.svg?style=flat-square
-[npm-pkg-link]: https://www.npmjs.org/package/fly-nunjucks-render
-[npm-ver-link]: https://img.shields.io/npm/v/fly-nunjucks-render.svg?style=flat-square
-[dl-badge]:     http://img.shields.io/npm/dm/fly-nunjucks-render.svg?style=flat-square
 [travis-link]:  https://travis-ci.org/lukeed/fly-nunjucks-render
 [travis-badge]: http://img.shields.io/travis/lukeed/fly-nunjucks-render.svg?style=flat-square
