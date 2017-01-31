@@ -19,8 +19,8 @@ npm install --save-dev fly-nunjucks-render
 ## Usage
 
 ```js
-exports.default = function * () {
-  yield this.source('src/*.html')
+exports.views = function * (fly) {
+  yield fly.source('src/*.html')
     .nunjucks({
       base: 'src/partials',
       data: {name: 'Luke Edwards'},
