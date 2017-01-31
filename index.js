@@ -1,10 +1,11 @@
 'use strict';
 
-const resolve = require('path').resolve;
+const {resolve} = require('path');
 const nunjucks = require('nunjucks');
 
-module.exports = function () {
-	this.plugin('nunjucks', {}, function * (file, opts) {
+module.exports = {
+	name: 'nunjucks',
+	* func(file, opts) {
 		opts = Object.assign({base: '.', data: {}, dataPath: ''}, opts);
 
 		// configure base directory
@@ -27,5 +28,5 @@ module.exports = function () {
 				error: err.message
 			});
 		}
-	});
+	}
 };
